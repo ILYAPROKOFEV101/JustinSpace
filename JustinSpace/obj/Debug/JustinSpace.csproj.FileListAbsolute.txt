@@ -6,7 +6,6 @@ C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.csproj
 C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\MainWindow.g.cs
 C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\App.g.cs
 C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_MarkupCompile.cache
-C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_MarkupCompile.lref
 C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\MainWindow.baml
 C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.g.resources
 C:\Users\Ilya\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.Properties.Resources.resources
