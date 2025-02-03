@@ -19,6 +19,7 @@ using System;
 using System.Diagnostics; // Для Debug.WriteLine
 using System.Windows;
 using System.Windows.Media.Animation;
+
 namespace JustinSpace
 {
     public partial class MainWindow : Window
@@ -26,6 +27,8 @@ namespace JustinSpace
         private Storyboard storyboard;
         private TranslateTransform rocketTranslate;
         private RotateTransform rocketRotate;
+        private Point orbitCenter = new Point(400, 200); // Центр орбиты
+        private double orbitRadius = 150; // Радиус орбиты
 
         public MainWindow()
         {
@@ -38,7 +41,6 @@ namespace JustinSpace
             {
                 throw new InvalidOperationException("RenderTransform должен быть типа TransformGroup.");
             }
-
             rocketTranslate = transformGroup.Children[0] as TranslateTransform;
             rocketRotate = transformGroup.Children[1] as RotateTransform;
 
@@ -62,45 +64,70 @@ namespace JustinSpace
                     storyboard.Stop();
                 }
 
-                // Анимация подъёма ракеты
-                DoubleAnimation liftAnimation = new DoubleAnimation
+                // Создаем анимацию взлета по параболе
+                DoubleAnimation liftXAnimation = new DoubleAnimation
                 {
                     From = 0,
-                    To = -100,
+                    To = orbitCenter.X - orbitRadius, // Движение вправо до начала орбиты
                     Duration = TimeSpan.FromSeconds(2),
                     AccelerationRatio = 0.3,
-                    DecelerationRatio = 0.3,
-                    FillBehavior = FillBehavior.HoldEnd
+                    DecelerationRatio = 0.3
                 };
-                Console.WriteLine("StartButton_Click: Создана анимация подъема.");
 
-                // Анимация вращения вокруг центра шарика
+                DoubleAnimation liftYAnimation = new DoubleAnimation
+                {
+                    From = 0,
+                    To = orbitCenter.Y - orbitRadius, // Движение вверх до начала орбиты
+                    Duration = TimeSpan.FromSeconds(2),
+                    AccelerationRatio = 0.3,
+                    DecelerationRatio = 0.3
+                };
+
+                Console.WriteLine("StartButton_Click: Создана анимация взлёта.");
+
+                // Создаем анимацию вращения по орбите
                 DoubleAnimation orbitAnimation = new DoubleAnimation
                 {
                     From = 0,
                     To = 360,
-                    Duration = TimeSpan.FromSeconds(3),
-                    RepeatBehavior = RepeatBehavior.Forever,
-                    BeginTime = TimeSpan.FromSeconds(2)
+                    Duration = TimeSpan.FromSeconds(5),
+                    RepeatBehavior = RepeatBehavior.Forever, // Бесконечное повторение
+                    AutoReverse = false // Без обратного движения
                 };
-                Console.WriteLine("StartButton_Click: Создана анимация вращения.");
 
+                Console.WriteLine("StartButton_Click: Создана анимация орбитального движения.");
+
+                // Создаем Storyboard
                 storyboard = new Storyboard();
-                storyboard.Children.Add(liftAnimation);
+
+                // Добавляем анимацию взлета
+                storyboard.Children.Add(liftXAnimation);
+                storyboard.Children.Add(liftYAnimation);
+
+                // Привязываем анимацию взлета к свойствам TranslateTransform
+                Storyboard.SetTarget(liftXAnimation, Rocket);
+                Storyboard.SetTargetProperty(liftXAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.X)"));
+
+                Storyboard.SetTarget(liftYAnimation, Rocket);
+                Storyboard.SetTargetProperty(liftYAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"));
+
+                // Устанавливаем центр поворота для орбитального движения
+                rocketRotate.CenterX = orbitCenter.X;
+                rocketRotate.CenterY = orbitCenter.Y;
+
+                // Добавляем анимацию вращения по орбите
                 storyboard.Children.Add(orbitAnimation);
-                Console.WriteLine("StartButton_Click: Добавлены анимации в Storyboard.");
 
-                // Привязка анимации подъёма
-                Storyboard.SetTarget(liftAnimation, Rocket);
-                Storyboard.SetTargetProperty(liftAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[0].(TranslateTransform.Y)"));
-                Console.WriteLine("StartButton_Click: Привязана анимация подъема к TranslateTransform.");
-
-                // Привязка анимации орбиты
+                // Привязываем анимацию вращения к свойству Angle RotateTransform
                 Storyboard.SetTarget(orbitAnimation, Rocket);
                 Storyboard.SetTargetProperty(orbitAnimation, new PropertyPath("(UIElement.RenderTransform).(TransformGroup.Children)[1].(RotateTransform.Angle)"));
-                Console.WriteLine("StartButton_Click: Привязана анимация вращения к RotateTransform.");
 
-                // Запуск анимации
+                // Устанавливаем начало орбитальной анимации после завершения анимации взлета
+                orbitAnimation.BeginTime = TimeSpan.FromSeconds(2);
+
+                Console.WriteLine("StartButton_Click: Все анимации добавлены в Storyboard.");
+
+                // Запускаем анимацию
                 storyboard.Begin(this);
                 Console.WriteLine("StartButton_Click: Анимация запущена.");
             }
