@@ -1,13 +1,12 @@
 ﻿<Window x:Class="JustinSpace.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Rocket Launch" Height="400" Width="600">
-    
+        Title="Rocket Launch" Height="450" Width="600">
     <Canvas Background="Black">
         <!-- Шар-основание -->
         <Ellipse Canvas.Left="250" Canvas.Top="300" 
                  Width="100" Height="100" 
-                 Fill="DarkGray" Stroke="White"/>
+                 Fill="Blue" Stroke="White"/>
         
         <!-- Куб-ракета -->
         <Rectangle x:Name="Rocket" 
@@ -15,15 +14,21 @@
                    Width="30" Height="50" 
                    Fill="Red" RadiusX="5" RadiusY="5">
             <Rectangle.RenderTransform>
-                <TranslateTransform Y="0"/>
+                <TransformGroup x:Name="RocketTransforms">
+                    <TranslateTransform Y="0"/>
+                    <RotateTransform CenterX="300" CenterY="350" Angle="0"/>
+                </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
         
-        <!-- Кнопка старт -->
-        <Button x:Name="StartButton" 
-                Canvas.Left="10" Canvas.Top="10" 
-                Content="СТАРТ!" Padding="15,5" 
-                Background="Green" Foreground="White"
-                Click="StartButton_Click"/>
+        <!-- Панель управления -->
+        <StackPanel Canvas.Left="10" Canvas.Top="10" Orientation="Vertical">
+            <TextBlock Text="Введите количество топлива:" Foreground="White" Margin="0,0,0,5"/>
+            <TextBox x:Name="FuelInput" Width="100" Height="25" Margin="0,0,0,10"/>
+            <Button x:Name="StartButton" 
+                    Content="СТАРТ!" Padding="15,5" 
+                    Background="Green" Foreground="White"
+                    Click="StartButton_Click"/>
+        </StackPanel>
     </Canvas>
 </Window>
