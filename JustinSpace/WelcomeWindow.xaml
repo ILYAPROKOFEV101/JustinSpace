@@ -1,37 +1,86 @@
 ﻿<Window x:Class="JustinSpace.WelcomeWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Добро пожаловать"
+        Title="JustinSpace"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Width="800" Height="500"
+        Width="800" Height="600"
         Background="Black">
 
     <Grid>
+        <!-- Фон -->
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#000000" Offset="0.0"/>
-                <GradientStop Color="#111122" Offset="1.0"/>
+                <GradientStop Color="#050505" Offset="0.0"/>
+                <GradientStop Color="#050505" Offset="1.0"/>
             </LinearGradientBrush>
         </Grid.Background>
 
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-            <TextBlock Text="🚀 JustinSpace" 
-                       FontSize="36" 
-                       FontWeight="Bold" 
-                       Foreground="White" 
-                       TextAlignment="Center" 
-                       Margin="0,0,0,10"/>
-            <TextBlock Text="Добро пожаловать в программу моделирования запуска ракеты"
-                       FontSize="18" 
-                       Foreground="LightGray" 
-                       TextAlignment="Center"
-                       Margin="0,0,0,30"/>
+        <!-- ЛОГО -->
+        <Image Source="pack://application:,,,/Assets/logo.png"
+               Width="380"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="0,50,0,0" />
 
-            <Button Content="СТАРТ" Width="160" Height="50"
-                    Background="DarkGreen" Foreground="White" FontSize="18"
-                    FontWeight="Bold" Click="StartButton_Click"/>
+        <!-- Содержимое -->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,70">
+            
+            <!-- Текст приветствия -->
+            <TextBlock Text="Добро пожаловать в программу моделирования запуска ракеты"
+                       FontSize="20"
+                       FontWeight="SemiBold"
+                       Foreground="#88DDFE"
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"
+                       Opacity="0.9"/>
+
+            <!-- Кнопка -->
+            <Button Content="▶ СТАРТ"
+                    Width="180" Height="50"
+                    FontSize="18"
+                    FontWeight="Bold"
+                    Foreground="#ffffff"
+                    Background="#00cc99"
+                    BorderBrush="#00ffaa"
+                    BorderThickness="2"
+                    Cursor="Hand"
+                    Padding="10,5"
+                    Click="StartButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect BlurRadius="8" ShadowDepth="0" Color="#00ffaa" Opacity="0.4"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}" 
+                                            CornerRadius="10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#00ffaa"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="15" ShadowDepth="0" Color="#00ffaa" Opacity="0.8"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
