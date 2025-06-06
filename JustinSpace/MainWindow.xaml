@@ -19,6 +19,7 @@
                     <RotateTransform CenterX="300" CenterY="350" Angle="0"/>
                 </TransformGroup>
             </Rectangle.RenderTransform>
+            
         </Rectangle>
         
         <!-- Панель управления -->
