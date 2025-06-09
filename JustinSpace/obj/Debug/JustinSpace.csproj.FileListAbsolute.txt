@@ -46,3 +46,6 @@ C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpac
 C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.csproj.CoreCompileInputs.cache
 C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.exe
 C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.pdb
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\bin\Debug\Tools.dll
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\bin\Debug\Tools.pdb
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSp.6AD38D50.Up2Date
