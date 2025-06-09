@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Rocket Launch" Height="450" Width="600">
     <Canvas Background="Black">
-        <!-- Шар-основание -->
+        <!-- Шар-основание (Земля) -->
         <Ellipse Canvas.Left="250" Canvas.Top="300" 
                  Width="100" Height="100" 
                  Fill="Blue" Stroke="White"/>
@@ -15,21 +15,51 @@
                    Fill="Red" RadiusX="5" RadiusY="5">
             <Rectangle.RenderTransform>
                 <TransformGroup x:Name="RocketTransforms">
-                    <TranslateTransform Y="0"/>
+                    <TranslateTransform x:Name="RocketTranslate" Y="0"/>
                     <RotateTransform CenterX="300" CenterY="350" Angle="0"/>
                 </TransformGroup>
             </Rectangle.RenderTransform>
-            
         </Rectangle>
-        
+
         <!-- Панель управления -->
-        <StackPanel Canvas.Left="10" Canvas.Top="10" Orientation="Vertical">
-            <TextBlock Text="Введите количество топлива:" Foreground="White" Margin="0,0,0,5"/>
-            <TextBox x:Name="FuelInput" Width="100" Height="25" Margin="0,0,0,10"/>
-            <Button x:Name="StartButton" 
-                    Content="СТАРТ!" Padding="15,5" 
-                    Background="Green" Foreground="White"
+        <StackPanel Canvas.Left="10" Canvas.Top="10" Orientation="Vertical" Width="200">
+            <TextBlock Text="Введите параметры ступеней:" Foreground="White" Margin="0,0,0,10"/>
+
+            <!-- Ступень 1 -->
+            <TextBlock Text="Ступень 1" FontWeight="Bold" Foreground="White"/>
+            <TextBox x:Name="Stage1DryMass" ToolTip="Сухая масса" />
+            <TextBox x:Name="Stage1FuelMass" ToolTip="Масса топлива" />
+            <TextBox x:Name="Stage1FuelConsumption" ToolTip="Расход топлива" Margin="0,0,0,10"/>
+
+            <!-- Ступень 2 -->
+            <TextBlock Text="Ступень 2" FontWeight="Bold" Foreground="White"/>
+            <TextBox x:Name="Stage2DryMass" ToolTip="Сухая масса" />
+            <TextBox x:Name="Stage2FuelMass" ToolTip="Масса топлива" />
+            <TextBox x:Name="Stage2FuelConsumption" ToolTip="Расход топлива" Margin="0,0,0,10"/>
+
+            <!-- Ступень 3 -->
+            <TextBlock Text="Ступень 3" FontWeight="Bold" Foreground="White"/>
+            <TextBox x:Name="Stage3DryMass" ToolTip="Сухая масса" />
+            <TextBox x:Name="Stage3FuelMass" ToolTip="Масса топлива" />
+            <TextBox x:Name="Stage3FuelConsumption" ToolTip="Расход топлива" Margin="0,0,0,10"/>
+
+            <!-- Кнопка запуска -->
+            <Button Content="Запустить ракету" 
+                    Click="StartButton_Click" 
+                    Background="Green" 
+                    Foreground="White"
+                    Padding="10,5"/>
+        </StackPanel>
+
+        <!-- Альтернативная кнопка (если хочешь оставить старую) -->
+        <!--
+        <StackPanel Canvas.Left="10" Canvas.Top="400" Orientation="Horizontal">
+            <TextBlock Text="Топливо:" Foreground="White"/>
+            <TextBox x:Name="FuelInput" Width="50" Height="25" Margin="5,0,5,0"/>
+            <Button x:Name="StartButton" Content="СТАРТ!" 
+                    Background="Orange" Foreground="Black"
                     Click="StartButton_Click"/>
         </StackPanel>
+        -->
     </Canvas>
 </Window>
