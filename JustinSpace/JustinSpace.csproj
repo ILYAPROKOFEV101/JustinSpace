@@ -67,6 +67,13 @@
         <Page Include="WelcomeWindow.xaml" />
     </ItemGroup>
     <ItemGroup>
+        <ProjectReference Include="..\Tools\Tools.csproj">
+            <Name>Tools</Name>
+            <Project>{FD2A5545-A126-41B5-99BD-AF4AB28885CC}</Project>
+            <Private>true</Private>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs">
             <SubType>Code</SubType>
         </Compile>
