@@ -9,37 +9,65 @@ namespace JustinSpace
 {
     public partial class MainWindow : Window
     {
-        private Storyboard storyboard;
+        private DispatcherTimer animationTimer;
         private TranslateTransform rocketTranslate;
         private Calculator currentCalculator;
         private int animationStepIndex = 0;
-        private DispatcherTimer animationTimer;
         private double zoomFactor = 1.0;
         private readonly double minZoom = 0.5;
         private readonly double maxZoom = 3.0;
-        
 
         public MainWindow()
         {
             InitializeComponent();
+            
+            // Настройка полноэкранного режима
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
+            
             var transformGroup = Rocket.RenderTransform as TransformGroup;
             rocketTranslate = transformGroup.Children[0] as TranslateTransform;
+            
+            // Центрирование сцены при загрузке
+            Loaded += (s, e) => CenterRocketInView();
         }
 
+        private void CenterRocketInView()
+        {
+            // Рассчитываем центр сцены
+            double centerX = SceneCanvas.Width / 2;
+            double centerY = SceneCanvas.Height / 2;
+    
+            // Автоматический подбор масштаба
+            zoomFactor = Math.Min(
+                GameScrollViewer.ViewportWidth / SceneCanvas.Width,
+                GameScrollViewer.ViewportHeight / SceneCanvas.Height
+            ) * 0.9; // 90% от максимального возможного масштаба
+    
+            // Замена Math.Clamp для старых версий .NET
+            zoomFactor = (zoomFactor < minZoom) ? minZoom : (zoomFactor > maxZoom) ? maxZoom : zoomFactor;
+    
+            ApplyZoom();
+    
+            // Прокрутка к ракете
+            GameScrollViewer.ScrollToHorizontalOffset(centerX - GameScrollViewer.ViewportWidth / 2);
+            GameScrollViewer.ScrollToVerticalOffset(centerY - GameScrollViewer.ViewportHeight / 2);
+        }
+        protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Escape)
+            {
+                WindowState = WindowState.Normal;
+                WindowStyle = WindowStyle.SingleBorderWindow;
+            }
+            base.OnKeyDown(e);
+        }
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             // Проверка ввода
-            if (!double.TryParse(Stage1DryMass.Text, out double dryMass1) ||
-                !double.TryParse(Stage1FuelMass.Text, out double fuelMass1) ||
-                !double.TryParse(Stage1FuelConsumption.Text, out double fuelConsumption1) ||
-                !double.TryParse(Stage2DryMass.Text, out double dryMass2) ||
-                !double.TryParse(Stage2FuelMass.Text, out double fuelMass2) ||
-                !double.TryParse(Stage2FuelConsumption.Text, out double fuelConsumption2) ||
-                !double.TryParse(Stage3DryMass.Text, out double dryMass3) ||
-                !double.TryParse(Stage3FuelMass.Text, out double fuelMass3) ||
-                !double.TryParse(Stage3FuelConsumption.Text, out double fuelConsumption3))
+            if (!ValidateInput())
             {
-                MessageBox.Show("Введите корректные параметры всех ступеней", "Ошибка");
+                MessageBox.Show("Пожалуйста, введите корректные числовые значения для всех параметров", "Ошибка ввода");
                 return;
             }
 
@@ -48,37 +76,61 @@ namespace JustinSpace
             animationStepIndex = 0;
 
             // Создание калькулятора
-            currentCalculator = new Calculator(
-                dryMass1, fuelMass1, fuelConsumption1,
-                dryMass2, fuelMass2, fuelConsumption2,
-                dryMass3, fuelMass3, fuelConsumption3);
+            currentCalculator = CreateCalculator();
 
             // Настройка таймера для анимации
             animationTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(50) };
             animationTimer.Tick += AnimateRocket;
             animationTimer.Start();
         }
-        
+
+        private bool ValidateInput()
+        {
+            return double.TryParse(Stage1DryMass.Text, out _) &&
+                   double.TryParse(Stage1FuelMass.Text, out _) &&
+                   double.TryParse(Stage1FuelConsumption.Text, out _) &&
+                   double.TryParse(Stage2DryMass.Text, out _) &&
+                   double.TryParse(Stage2FuelMass.Text, out _) &&
+                   double.TryParse(Stage2FuelConsumption.Text, out _) &&
+                   double.TryParse(Stage3DryMass.Text, out _) &&
+                   double.TryParse(Stage3FuelMass.Text, out _) &&
+                   double.TryParse(Stage3FuelConsumption.Text, out _);
+        }
+
+        private Calculator CreateCalculator()
+        {
+            return new Calculator(
+                double.Parse(Stage1DryMass.Text),
+                double.Parse(Stage1FuelMass.Text),
+                double.Parse(Stage1FuelConsumption.Text),
+                double.Parse(Stage2DryMass.Text),
+                double.Parse(Stage2FuelMass.Text),
+                double.Parse(Stage2FuelConsumption.Text),
+                double.Parse(Stage3DryMass.Text),
+                double.Parse(Stage3FuelMass.Text),
+                double.Parse(Stage3FuelConsumption.Text));
+        }
+
         private void AnimateRocket(object sender, EventArgs e)
         {
-            if (animationStepIndex >= currentCalculator.YAxisValues.Count)
+            if (currentCalculator == null || animationStepIndex >= currentCalculator.YAxisValues.Count)
             {
-                animationTimer.Stop();
+                animationTimer?.Stop();
                 return;
             }
 
-            // Масштабирование: 1 метр = 0.01 пикселя (можно настроить)
             double scale = 0.01;
-
             double x = currentCalculator.XAxisValues[animationStepIndex] * scale;
-            double y = -currentCalculator.YAxisValues[animationStepIndex] * scale; // Отрицательное значение для движения вверх
+            double y = -currentCalculator.YAxisValues[animationStepIndex] * scale;
 
             rocketTranslate.X = x;
             rocketTranslate.Y = y;
 
+            
+
             animationStepIndex++;
         }
-        
+
         private void ZoomInButton_Click(object sender, RoutedEventArgs e)
         {
             if (zoomFactor < maxZoom)
@@ -101,6 +153,12 @@ namespace JustinSpace
         {
             SceneCanvasScaleTransform.ScaleX = zoomFactor;
             SceneCanvasScaleTransform.ScaleY = zoomFactor;
+            var animation = new DoubleAnimation(zoomFactor, TimeSpan.FromMilliseconds(300))
+            {
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+            SceneCanvasScaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, animation);
+            SceneCanvasScaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
         }
     }
 }
