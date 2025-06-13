@@ -3,8 +3,12 @@ using System.Collections.Generic;
 
 namespace Tools.Properties.MainTools
 {
+    
     public abstract class Stages
     {
+        protected List<double> fuelLeftValues = new List<double>();
+        public List<double> FuelLeftValues => fuelLeftValues;
+
         protected double t; // Время работы ступени, с
         protected double F; // Тяга двигателя, Н
         protected double Fmin; // Минимальная тяга, Н
