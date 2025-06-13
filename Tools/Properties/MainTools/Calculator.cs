@@ -70,8 +70,43 @@ namespace Tools.Properties.MainTools
                 yAxisValues[i] += h;
             }
         }
+        
 
         public List<double> XAxisValues => xAxisValues;
         public List<double> YAxisValues => yAxisValues;
+        public List<double> SpeedValues
+        {
+            get
+            {
+                var allSpeeds = new List<double>();
+                allSpeeds.AddRange(StageOne.SpeedYValues);
+                allSpeeds.AddRange(StageTwo.SpeedYValues);
+                allSpeeds.AddRange(StageThree.SpeedYValues);
+                return allSpeeds;
+            }
+        }
+
+        public List<int> StageIndices
+        {
+            get
+            {
+                var indices = new List<int>();
+                indices.AddRange(Enumerable.Repeat(1, StageOne.SpeedYValues.Count));
+                indices.AddRange(Enumerable.Repeat(2, StageTwo.SpeedYValues.Count));
+                indices.AddRange(Enumerable.Repeat(3, StageThree.SpeedYValues.Count));
+                return indices;
+            }
+        }
+        public List<double> FuelLeftValues
+        {
+            get
+            {
+                var allFuelLeft = new List<double>();
+                allFuelLeft.AddRange(StageOne.FuelLeftValues);
+                allFuelLeft.AddRange(StageTwo.FuelLeftValues);
+                allFuelLeft.AddRange(StageThree.FuelLeftValues);
+                return allFuelLeft;
+            }
+        }
     }
 }
