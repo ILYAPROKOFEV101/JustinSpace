@@ -1,77 +1,187 @@
 ﻿<Window x:Class="JustinSpace.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Rocket Launch" Height="450" Width="600"
-        Background="Black">
+        Title="Rocket Launch Simulator" 
+        Height="600" Width="900"
+        WindowState="Maximized" 
+        WindowStyle="None"
+        Background="#0F0F13"
+        FontFamily="Segoe UI">
+    
+    <Window.Resources>
+        <Style TargetType="Border">
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#2E2E36"/>
+        </Style>
+        
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="#E1E1E1"/>
+            <Setter Property="BorderBrush" Value="#3A3A44"/>
+            <Setter Property="Background" Value="#1A1A21"/>
+            <Setter Property="Margin" Value="0 0 0 15"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="#B5B5C3"/>
+            <Setter Property="Margin" Value="0,5,0,0"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+        
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#252531"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#3A3A44"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#3A86FF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,8"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2B6CDB"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <DropShadowEffect x:Key="ShadowEffect" BlurRadius="15" ShadowDepth="3" Opacity="0.3" Color="Black"/>
+    </Window.Resources>
+
     <Grid>
-        <!-- Основной контейнер -->
-        <Grid>
-            <!-- Панель управления -->
-            <StackPanel x:Name="ControlPanel" Orientation="Vertical" Width="200"
-                        VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"
-                        Background="#222" Panel.ZIndex="1">
-                <TextBlock Text="Введите параметры ступеней:" Foreground="White" Margin="0,0,0,10"/>
+        <!-- Левая панель управления -->
+        <Border Background="#1A1A21" Padding="15" Margin="10"
+                VerticalAlignment="Stretch"
+                HorizontalAlignment="Left" Width="280"
+                Effect="{StaticResource ShadowEffect}">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="ПАРАМЕТРЫ ЗАПУСКА"
+                               Foreground="#E1E1E1" FontSize="16" 
+                               FontWeight="Bold" Margin="0 0 0 20"
+                               TextDecorations="Underline"/>
+                    
+                    <!-- Ступень 1 -->
+                    <GroupBox Header="СТУПЕНЬ 1">
+                        <StackPanel Margin="5">
+                            <Label Content="Сухая масса (кг):"/>
+                            <TextBox x:Name="Stage1DryMass"/>
+                            <Label Content="Масса топлива (кг):"/>
+                            <TextBox x:Name="Stage1FuelMass"/>
+                            <Label Content="Расход топлива (кг/с):"/>
+                            <TextBox x:Name="Stage1FuelConsumption"/>
+                        </StackPanel>
+                    </GroupBox>
 
-                <!-- Ступень 1 -->
-                <TextBlock Text="Ступень 1" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="Stage1DryMass" ToolTip="Сухая масса" />
-                <TextBox x:Name="Stage1FuelMass" ToolTip="Масса топлива" />
-                <TextBox x:Name="Stage1FuelConsumption" ToolTip="Расход топлива" Margin="0,0,0,10"/>
+                    <!-- Ступень 2 -->
+                    <GroupBox Header="СТУПЕНЬ 2">
+                        <StackPanel Margin="5">
+                            <Label Content="Сухая масса (кг):"/>
+                            <TextBox x:Name="Stage2DryMass"/>
+                            <Label Content="Масса топлива (кг):"/>
+                            <TextBox x:Name="Stage2FuelMass"/>
+                            <Label Content="Расход топлива (кг/с):"/>
+                            <TextBox x:Name="Stage2FuelConsumption"/>
+                        </StackPanel>
+                    </GroupBox>
 
-                <!-- Ступень 2 -->
-                <TextBlock Text="Ступень 2" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="Stage2DryMass" ToolTip="Сухая масса" />
-                <TextBox x:Name="Stage2FuelMass" ToolTip="Масса топлива" />
-                <TextBox x:Name="Stage2FuelConsumption" ToolTip="Расход топлива" Margin="0,0,0,10"/>
+                    <!-- Ступень 3 -->
+                    <GroupBox Header="СТУПЕНЬ 3">
+                        <StackPanel Margin="5">
+                            <Label Content="Сухая масса (кг):"/>
+                            <TextBox x:Name="Stage3DryMass"/>
+                            <Label Content="Масса топлива (кг):"/>
+                            <TextBox x:Name="Stage3FuelMass"/>
+                            <Label Content="Расход топлива (кг/с):"/>
+                            <TextBox x:Name="Stage3FuelConsumption"/>
+                        </StackPanel>
+                    </GroupBox>
 
-                <!-- Ступень 3 -->
-                <TextBlock Text="Ступень 3" FontWeight="Bold" Foreground="White"/>
-                <TextBox x:Name="Stage3DryMass" ToolTip="Сухая масса" />
-                <TextBox x:Name="Stage3FuelMass" ToolTip="Масса топлива" />
-                <TextBox x:Name="Stage3FuelConsumption" ToolTip="Расход топлива" Margin="0,0,0,10"/>
-
-                <!-- Кнопка запуска -->
-                <Button Content="Запустить ракету" 
-                        Click="StartButton_Click" 
-                        Background="Green" 
-                        Foreground="White"
-                        Padding="10,5"/>
-            </StackPanel>
-
-            <!-- Кнопки масштабирования -->
-            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left" Orientation="Horizontal" Margin="10" Panel.ZIndex="1">
-                <Button Content="+" Width="30" Height="30" Click="ZoomInButton_Click" Margin="0,0,5,0"/>
-                <Button Content="-" Width="30" Height="30" Click="ZoomOutButton_Click"/>
-            </StackPanel>
-
-            <!-- Прокручиваемая область с объектами -->
-            <ScrollViewer x:Name="GameScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                <!-- Область с объектами (ракета, Земля), которую будем масштабировать -->
-                <Canvas x:Name="SceneCanvas" Background="Black" Width="2000" Height="2000" RenderTransformOrigin="0.5,0.5">
-                    <!-- Добавляем ScaleTransform для масштабирования -->
-                    <Canvas.RenderTransform>
-                        <ScaleTransform x:Name="SceneCanvasScaleTransform" ScaleX="1" ScaleY="1" />
-                    </Canvas.RenderTransform>
-
-                    <!-- Шар-основание (Земля) -->
-                    <Ellipse Canvas.Left="950" Canvas.Top="1800" 
-                             Width="100" Height="100" 
-                             Fill="Blue" Stroke="White"/>
-
-                    <!-- Куб-ракета -->
-                    <Rectangle x:Name="Rocket" 
-                               Canvas.Left="985" Canvas.Top="1750" 
-                               Width="30" Height="50" 
-                               Fill="Red" RadiusX="5" RadiusY="5">
-                        <Rectangle.RenderTransform>
-                            <TransformGroup x:Name="RocketTransforms">
-                                <TranslateTransform x:Name="RocketTranslate" Y="0"/>
-                                <RotateTransform CenterX="300" CenterY="350" Angle="0"/>
-                            </TransformGroup>
-                        </Rectangle.RenderTransform>
-                    </Rectangle>
-                </Canvas>
+                    <!-- Кнопка запуска -->
+                    <Button Content="🚀 ЗАПУСТИТЬ РАКЕТУ"
+                            Click="StartButton_Click"
+                            Margin="0,20,0,0"
+                            Background="#FF5A67"
+                            FontSize="15">
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="3" Color="#FF5A67"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
             </ScrollViewer>
+        </Border>
+
+        <!-- Правая часть: сцена -->
+        <Grid Margin="300,10,10,10">
+            <!-- Кнопки масштабирования -->
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                        Orientation="Horizontal" Margin="15" Panel.ZIndex="1">
+                <Button Content="+" Width="35" Height="35" Click="ZoomInButton_Click" 
+                        Margin="0,0,5,0" FontSize="18" FontWeight="Bold"/>
+                <Button Content="-" Width="35" Height="35" Click="ZoomOutButton_Click"
+                        FontSize="18" FontWeight="Bold"/>
+            </StackPanel>
+
+            <!-- Область отображения ракеты -->
+            <Border CornerRadius="8" Background="#1A1A21" BorderBrush="#2E2E36"
+                    Effect="{StaticResource ShadowEffect}">
+                <ScrollViewer x:Name="GameScrollViewer" 
+                              HorizontalScrollBarVisibility="Auto" 
+                              VerticalScrollBarVisibility="Auto">
+                    <Canvas x:Name="SceneCanvas" Background="#0D0D12" 
+                            Width="2000" Height="2000" RenderTransformOrigin="0.5,0.5">
+                        <Canvas.RenderTransform>
+                            <ScaleTransform x:Name="SceneCanvasScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Canvas.RenderTransform>
+
+                        <!-- Звездное небо -->
+                        <Canvas.Resources>
+                            <Style TargetType="Ellipse">
+                                <Setter Property="Fill" Value="White"/>
+                                <Setter Property="Width" Value="2"/>
+                                <Setter Property="Height" Value="2"/>
+                            </Style>
+                        </Canvas.Resources>
+                        
+                        <!-- Звезды -->
+                        <Ellipse Canvas.Left="150" Canvas.Top="200"/>
+                        <Ellipse Canvas.Left="300" Canvas.Top="450"/>
+                        <Ellipse Canvas.Left="700" Canvas.Top="150"/>
+                        <Ellipse Canvas.Left="900" Canvas.Top="300"/>
+                        <Ellipse Canvas.Left="1200" Canvas.Top="500"/>
+                        <Ellipse Canvas.Left="1800" Canvas.Top="250"/>
+                        <Ellipse Canvas.Left="500" Canvas.Top="700"/>
+                        <Ellipse Canvas.Left="1300" Canvas.Top="900"/>
+                        
+                        <!-- Земля -->
+                        <Ellipse Canvas.Left="950" Canvas.Top="1800"
+                                 Width="100" Height="100"
+                                 Fill="#1E88E5" Stroke="#0D47A1" StrokeThickness="2"/>
+
+                        <!-- Ракета -->
+                        <Path x:Name="Rocket" Canvas.Left="985" Canvas.Top="1750"
+                              Data="M15,0 L30,50 L0,50 Z" 
+                              Fill="#FF5A67" Stroke="#D32F2F" StrokeThickness="1.5">
+                            <Path.RenderTransform>
+                                <TransformGroup x:Name="RocketTransforms">
+                                    <TranslateTransform x:Name="RocketTranslate" Y="0"/>
+                                    <RotateTransform CenterX="15" CenterY="25" Angle="0"/>
+                                </TransformGroup>
+                            </Path.RenderTransform>
+                        </Path>
+                    </Canvas>
+                </ScrollViewer>
+            </Border>
         </Grid>
     </Grid>
 </Window>
