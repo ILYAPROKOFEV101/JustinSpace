@@ -126,10 +126,29 @@ namespace JustinSpace
             rocketTranslate.X = x;
             rocketTranslate.Y = y;
 
-            
+            // Обновление телеметрии
+            double time = animationStepIndex * animationTimer.Interval.TotalSeconds;
+            double altitude = currentCalculator.YAxisValues[animationStepIndex];
+            double speed = currentCalculator.SpeedValues[animationStepIndex];
+            int stage = currentCalculator.StageIndices[animationStepIndex];
+
+            // Проверяем, есть ли список с остатком топлива (fuelLeft или FuelLeftValues)
+            double fuelLeft = 0;
+            if (currentCalculator.FuelLeftValues != null && animationStepIndex < currentCalculator.FuelLeftValues.Count)
+            {
+                fuelLeft = currentCalculator.FuelLeftValues[animationStepIndex];
+            }
+
+            TimeText.Text = $"Время: {time:0.0} с";
+            AltitudeText.Text = $"Высота: {altitude:0} м";
+            SpeedText.Text = $"Скорость: {speed:0} м/с";
+            FuelText.Text = $"Остаток топлива: {fuelLeft:0} кг";
+            StageText.Text = $"Текущая ступень: {stage}";
 
             animationStepIndex++;
         }
+
+
 
         private void ZoomInButton_Click(object sender, RoutedEventArgs e)
         {
@@ -151,12 +170,24 @@ namespace JustinSpace
 
         private void ApplyZoom()
         {
+            // Останавливаем предыдущие анимации
+            SceneCanvasScaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, null);
+            SceneCanvasScaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, null);
+    
+            // Устанавливаем новые значения сразу
             SceneCanvasScaleTransform.ScaleX = zoomFactor;
             SceneCanvasScaleTransform.ScaleY = zoomFactor;
-            var animation = new DoubleAnimation(zoomFactor, TimeSpan.FromMilliseconds(300))
+    
+            // Создаем плавную анимацию
+            var animation = new DoubleAnimation(
+                zoomFactor, 
+                TimeSpan.FromMilliseconds(300))
             {
-                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut },
+                FillBehavior = FillBehavior.HoldEnd // Сохраняем конечное значение
             };
+    
+            // Применяем анимацию
             SceneCanvasScaleTransform.BeginAnimation(ScaleTransform.ScaleXProperty, animation);
             SceneCanvasScaleTransform.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
         }
