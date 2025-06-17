@@ -10,3 +10,9 @@ C:\Users\marty\RiderProjects\JustinSpace\Tools\bin\Debug\Tools.dll
 C:\Users\marty\RiderProjects\JustinSpace\Tools\bin\Debug\Tools.pdb
 C:\Users\marty\RiderProjects\JustinSpace\Tools\obj\Debug\Tools.csproj.AssemblyReference.cache
 C:\Users\marty\RiderProjects\JustinSpace\Tools\obj\Debug\Tools.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\RiderProjects\JustinSpace\Tools\bin\Debug\Tools.dll
+C:\Users\Ivan\RiderProjects\JustinSpace\Tools\bin\Debug\Tools.pdb
+C:\Users\Ivan\RiderProjects\JustinSpace\Tools\obj\Debug\Tools.csproj.AssemblyReference.cache
+C:\Users\Ivan\RiderProjects\JustinSpace\Tools\obj\Debug\Tools.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\RiderProjects\JustinSpace\Tools\obj\Debug\Tools.dll
+C:\Users\Ivan\RiderProjects\JustinSpace\Tools\obj\Debug\Tools.pdb

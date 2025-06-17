@@ -51,6 +51,7 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Compile Include="RocketControl.xaml.cs" />
         <Compile Include="WelcomeWindow.xaml.cs" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
@@ -64,6 +65,7 @@
             <DependentUpon>MainWindow.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Page Include="RocketControl.xaml" />
         <Page Include="WelcomeWindow.xaml" />
     </ItemGroup>
     <ItemGroup>

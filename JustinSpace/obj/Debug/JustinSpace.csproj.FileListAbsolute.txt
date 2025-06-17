@@ -68,3 +68,10 @@ C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.cspro
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSp.6AD38D50.Up2Date
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.exe
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace.pdb
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\bin\Debug\Tools.dll
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\bin\Debug\Tools.pdb
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSp.6AD38D50.Up2Date
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\RocketControl.baml
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\RocketControl.g.cs
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_MarkupCompile.lref
