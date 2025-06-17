@@ -11,9 +11,6 @@ namespace JustinSpace.Controls
             InitializeComponent();
         }
 
-        public void ShowFlame(bool visible)
-        {
-            RocketFlame.Visibility = visible ? Visibility.Visible : Visibility.Hidden;
-        }
+        
     }
 }

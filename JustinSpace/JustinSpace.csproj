@@ -51,8 +51,10 @@
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
         </ApplicationDefinition>
+        <Compile Include="EarthControl.xaml.cs" />
         <Compile Include="RocketControl.xaml.cs" />
         <Compile Include="WelcomeWindow.xaml.cs" />
+        <Page Include="EarthControl.xaml" />
         <Page Include="MainWindow.xaml">
             <Generator>MSBuild:Compile</Generator>
             <SubType>Designer</SubType>
@@ -96,6 +98,12 @@
       <Resource Include="Assets\logo.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Assets\earth.jpg" />
+      <Content Include="Assets\orig.webp" />
+      <Resource Include="Assets\rocket_photo.png" />
+      <Resource Include="Assets\earth_texture.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>

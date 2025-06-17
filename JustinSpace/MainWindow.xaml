@@ -2,6 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:JustinSpace.Controls"
+        xmlns:local="clr-namespace:JustinSpace"
+        
         Title="Rocket Launch Simulator"
         WindowState="Maximized"
         WindowStyle="None"
@@ -235,8 +237,8 @@
 
                         <!-- Ракета -->
                         <controls:RocketControl x:Name="Rocket"
-                                                Canvas.Left="950"
-                                                Canvas.Top="1700"
+                                                Canvas.Left="820"
+                                                Canvas.Top="1369"
                                                 RenderTransformOrigin="0.5,0.5">
                             <controls:RocketControl.RenderTransform>
                                 <TransformGroup>
@@ -248,10 +250,7 @@
                         </controls:RocketControl>
 
                         <!-- Земля -->
-                        <Ellipse Canvas.Left="950" Canvas.Top="1800"
-                                 Width="100" Height="100"
-                                 Fill="#1E88E5" Stroke="#0D47A1" StrokeThickness="3"
-                                 Opacity="0.9"/>
+                        <local:EarthControl Canvas.Left="800" Canvas.Top="1700"/>
                     </Canvas>
                 </ScrollViewer>
             </Border>
