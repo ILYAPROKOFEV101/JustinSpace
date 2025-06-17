@@ -237,8 +237,8 @@
 
                         <!-- Ракета -->
                         <controls:RocketControl x:Name="Rocket"
-                                                Canvas.Left="820"
-                                                Canvas.Top="1369"
+                                                Canvas.Left="920"
+                                                Canvas.Top="1569"
                                                 RenderTransformOrigin="0.5,0.5">
                             <controls:RocketControl.RenderTransform>
                                 <TransformGroup>
