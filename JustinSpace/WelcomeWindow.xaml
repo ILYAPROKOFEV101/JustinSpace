@@ -6,7 +6,7 @@
         WindowStyle="None"
         ResizeMode="NoResize"
         Width="800" Height="600"
-        Background="Black">
+        Background="#050505">
 
     <Grid>
         <!-- Фон -->
@@ -70,7 +70,7 @@
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#00ffaa"/>
-                                <Setter Property="Foreground" Value="Black"/>
+                                <Setter Property="Foreground" Value="#050505"/>
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect BlurRadius="15" ShadowDepth="0" Color="#00ffaa" Opacity="0.8"/>

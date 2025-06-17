@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\App.xaml
-21375223663
-
-5671776534
+41209782827
+2-2079213122
+7-2080702102
 101375601195
-MainWindow.xaml;WelcomeWindow.xaml;
+EarthControl.xaml;MainWindow.xaml;RocketControl.xaml;WelcomeWindow.xaml;
 
 False
 

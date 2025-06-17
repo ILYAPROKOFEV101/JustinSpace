@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using System.Linq;
+
 using Tools.Properties.MainTools;
 
 namespace JustinSpace
@@ -26,7 +28,18 @@ namespace JustinSpace
             WindowStyle = WindowStyle.None;
             
             var transformGroup = Rocket.RenderTransform as TransformGroup;
-            rocketTranslate = transformGroup.Children[0] as TranslateTransform;
+            if (transformGroup != null)
+            {
+                rocketTranslate = transformGroup.Children
+                    .OfType<TranslateTransform>()
+                    .FirstOrDefault();
+            }
+
+            if (rocketTranslate == null)
+            {
+                MessageBox.Show("Ошибка: TranslateTransform не найден в TransformGroup у Rocket.");
+            }
+
             
             // Центрирование сцены при загрузке
             Loaded += (s, e) => CenterRocketInView();

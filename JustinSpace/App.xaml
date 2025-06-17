@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:JustinSpace"
              StartupUri="WelcomeWindow.xaml">
     <Application.Resources>
-         
+        <BlurEffect x:Key="BlurEffect" Radius="5"/>
     </Application.Resources>
 </Application>
