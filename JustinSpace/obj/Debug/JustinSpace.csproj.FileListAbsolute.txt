@@ -83,3 +83,11 @@ C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.baml
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.g.cs
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\App.baml
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_Content.g.cs
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.baml
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\RocketControl.baml
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.g.cs
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\RocketControl.g.cs
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_Content.g.cs
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_MarkupCompile.lref
+C:\Users\ilyaprokofev\RiderProjects\JustinSpace\JustinSpace\obj\Debug\App.baml

@@ -237,17 +237,18 @@
 
                         <!-- Ракета -->
                         <controls:RocketControl x:Name="Rocket"
-                                                Canvas.Left="920"
-                                                Canvas.Top="1569"
+                                                Canvas.Left="1000"
+                                                Canvas.Top="1590"
                                                 RenderTransformOrigin="0.5,0.5">
                             <controls:RocketControl.RenderTransform>
                                 <TransformGroup>
-                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                    <ScaleTransform ScaleX="0.1" ScaleY="0.1"/> <!-- уменьшение в 2 раза -->
                                     <RotateTransform Angle="0"/>
                                     <TranslateTransform X="0" Y="0"/>
                                 </TransformGroup>
                             </controls:RocketControl.RenderTransform>
                         </controls:RocketControl>
+
 
                         <!-- Земля -->
                         <local:EarthControl Canvas.Left="800" Canvas.Top="1700"/>
