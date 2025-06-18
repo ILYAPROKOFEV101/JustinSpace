@@ -156,7 +156,7 @@ namespace JustinSpace
             AltitudeText.Text = $"Высота: {altitude:0} м";
             SpeedText.Text = $"Скорость: {speed:0} м/с";
             FuelText.Text = $"Остаток топлива: {fuelLeft:0} кг";
-            StageText.Text = $"Текущая ступень: {stage}";
+           
 
             animationStepIndex++;
         }

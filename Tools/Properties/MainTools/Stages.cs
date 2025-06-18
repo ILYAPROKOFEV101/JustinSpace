@@ -96,7 +96,11 @@ namespace Tools.Properties.MainTools
 
         public virtual double GetCurrentMass(double time)
         {
-            return dryMass + fuelMass - fuelConsumptionRate * time;
+            double remainingFuel = Math.Max(0, fuelMass - fuelConsumptionRate * time);
+            fuelLeftValues.Add(remainingFuel);
+    
+            // Возвращаем общую массу (сухая масса + остаток топлива)
+            return dryMass + remainingFuel;
         }
     }
 }

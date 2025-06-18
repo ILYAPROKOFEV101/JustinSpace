@@ -105,6 +105,12 @@ namespace Tools.Properties.MainTools
                 allFuelLeft.AddRange(StageOne.FuelLeftValues);
                 allFuelLeft.AddRange(StageTwo.FuelLeftValues);
                 allFuelLeft.AddRange(StageThree.FuelLeftValues);
+        
+                if (allFuelLeft.Count != YAxisValues.Count)
+                {
+                    Console.WriteLine($"Warning: FuelLeftValues count {allFuelLeft.Count} != YAxisValues count {YAxisValues.Count}");
+                }
+        
                 return allFuelLeft;
             }
         }
