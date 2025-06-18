@@ -166,7 +166,7 @@
                 <TextBlock x:Name="AltitudeText" Text="Высота: 0 м" Style="{StaticResource TelemetryTextStyle}"/>
                 <TextBlock x:Name="SpeedText" Text="Скорость: 0 м/с" Style="{StaticResource TelemetryTextStyle}"/>
                 <TextBlock x:Name="FuelText" Text="Топливо: 0 кг" Style="{StaticResource TelemetryTextStyle}"/>
-                <TextBlock x:Name="StageText" Text="Ступень: 1" Style="{StaticResource TelemetryTextStyle}"/>
+                
             </StackPanel>
         </Border>
 
@@ -237,7 +237,7 @@
 
                         <!-- Ракета -->
                         <controls:RocketControl x:Name="Rocket"
-                                                Canvas.Left="920"
+                                                Canvas.Left="990"
                                                 Canvas.Top="1569"
                                                 RenderTransformOrigin="0.5,0.5">
                             <controls:RocketControl.RenderTransform>
