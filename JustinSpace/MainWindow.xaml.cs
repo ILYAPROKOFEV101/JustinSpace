@@ -4,6 +4,10 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Linq;
+using JustinSpace.Controls;  
+using System.Windows.Controls;
+// или другой namespace, где находится RocketControl
+
 
 using Tools.Properties.MainTools;
 
@@ -11,6 +15,8 @@ namespace JustinSpace
 {
     public partial class MainWindow : Window
     {
+        private bool isFlightInProgress = false;
+
         private DispatcherTimer animationTimer;
         private TranslateTransform rocketTranslate;
         private Calculator currentCalculator;
@@ -22,7 +28,7 @@ namespace JustinSpace
         public MainWindow()
         {
             InitializeComponent();
-            
+            RocketPicker.RocketSelected += OnRocketSelected;
             // Настройка полноэкранного режима
             WindowState = WindowState.Maximized;
             WindowStyle = WindowStyle.None;
@@ -44,6 +50,71 @@ namespace JustinSpace
             // Центрирование сцены при загрузке
             Loaded += (s, e) => CenterRocketInView();
         }
+        private void OnRocketSelected(string rocketTag)
+        {
+            if (isFlightInProgress)
+                return;
+
+            Dispatcher.Invoke(() => {
+                // Удаляем старую ракету
+                SceneCanvas.Children.Remove(Rocket);
+
+                // Создаём новую ракету
+                Rocket = new RocketControl();
+
+                // Можно добавить параметр для новой ракеты, если есть
+                Rocket.SetRocket(rocketTag);
+
+                // Устанавливаем позицию и трансформы (как в XAML)
+                Canvas.SetLeft(Rocket, 990);
+                Canvas.SetTop(Rocket, 1500);
+                Rocket.RenderTransformOrigin = new Point(0.5, 0.5);
+                var tg = new TransformGroup();
+                tg.Children.Add(new ScaleTransform(1,1));
+                tg.Children.Add(new RotateTransform(0));
+                tg.Children.Add(new TranslateTransform(0,0));
+                Rocket.RenderTransform = tg;
+
+                // Добавляем на канвас
+                SceneCanvas.Children.Add(Rocket);
+                // Обновляем ссылку на Transform новой ракеты
+                var transformGroup = Rocket.RenderTransform as TransformGroup;
+                if (transformGroup != null)
+                {
+                    rocketTranslate = transformGroup.Children
+                        .OfType<TranslateTransform>()
+                        .FirstOrDefault();
+                }
+
+                if (rocketTranslate == null)
+                {
+                    MessageBox.Show("Ошибка: Transform не найден у выбранной ракеты.");
+                }
+
+            });
+        }
+
+        public void SetRocket(string rocketName)
+        {
+            // Логика смены внешнего вида ракеты,
+            // например менять изображение, цвет или детали
+
+            // Пример:
+            switch (rocketName)
+            {
+                case "rocket1":
+                    // изменить свойства для ракеты 1
+                    break;
+                case "rocket2":
+                    // изменить свойства для ракеты 2
+                    break;
+                case "rocket3":
+                    // изменить свойства для ракеты 3
+                    break;
+            }
+        }
+
+
 
         private void CenterRocketInView()
         {
@@ -87,6 +158,10 @@ namespace JustinSpace
             // Остановить предыдущую анимацию
             animationTimer?.Stop();
             animationStepIndex = 0;
+            
+            isFlightInProgress = true;
+            RocketPicker.RocketComboBox.IsEnabled = false;
+
 
             // Создание калькулятора
             currentCalculator = CreateCalculator();
@@ -129,8 +204,11 @@ namespace JustinSpace
             if (currentCalculator == null || animationStepIndex >= currentCalculator.YAxisValues.Count)
             {
                 animationTimer?.Stop();
+                isFlightInProgress = false;
+                RocketPicker.RocketComboBox.IsEnabled = true;
                 return;
             }
+
 
             double scale = 0.01;
             double x = currentCalculator.XAxisValues[animationStepIndex] * scale;
@@ -180,6 +258,7 @@ namespace JustinSpace
                 ApplyZoom();
             }
         }
+        
 
         private void ApplyZoom()
         {

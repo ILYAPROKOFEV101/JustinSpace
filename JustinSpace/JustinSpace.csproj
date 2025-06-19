@@ -53,6 +53,7 @@
         </ApplicationDefinition>
         <Compile Include="EarthControl.xaml.cs" />
         <Compile Include="RocketControl.xaml.cs" />
+        <Compile Include="RocketSelectorControl.xaml.cs" />
         <Compile Include="WelcomeWindow.xaml.cs" />
         <Page Include="EarthControl.xaml" />
         <Page Include="MainWindow.xaml">
@@ -68,6 +69,7 @@
             <SubType>Code</SubType>
         </Compile>
         <Page Include="RocketControl.xaml" />
+        <Page Include="RocketSelectorControl.xaml" />
         <Page Include="WelcomeWindow.xaml" />
     </ItemGroup>
     <ItemGroup>
@@ -102,6 +104,9 @@
     <ItemGroup>
       <Content Include="Assets\earth.jpg" />
       <Content Include="Assets\orig.webp" />
+      <Resource Include="Assets\photo3.png" />
+      <Resource Include="Assets\photo1.png" />
+      <Resource Include="Assets\photo2.png" />
       <Resource Include="Assets\rocket_photo.png" />
       <Resource Include="Assets\earth_texture.png" />
     </ItemGroup>

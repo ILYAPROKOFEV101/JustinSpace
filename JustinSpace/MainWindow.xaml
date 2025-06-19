@@ -172,6 +172,8 @@
 
         <!-- Основная сцена -->
         <Grid Margin="320,10,10,10">
+         
+
             <!-- Кнопки масштабирования -->
             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left"
                         Orientation="Horizontal" Margin="15" Panel.ZIndex="1">
@@ -238,7 +240,7 @@
                         <!-- Ракета -->
                         <controls:RocketControl x:Name="Rocket"
                                                 Canvas.Left="990"
-                                                Canvas.Top="1569"
+                                                  Canvas.Top="1469"
                                                 RenderTransformOrigin="0.5,0.5">
                             <controls:RocketControl.RenderTransform>
                                 <TransformGroup>
@@ -254,6 +256,11 @@
                     </Canvas>
                 </ScrollViewer>
             </Border>
+            <controls:RocketSelectorControl x:Name="RocketPicker"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Margin="0,0,20,20"
+            />
         </Grid>
     </Grid>
 </Window>

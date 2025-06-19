@@ -83,3 +83,9 @@ C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.baml
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.g.cs
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\App.baml
 C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_Content.g.cs
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.baml
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\EarthControl.g.cs
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\JustinSpace_Content.g.cs
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\App.baml
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\RocketSelectorControl.baml
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\RocketSelectorControl.g.cs

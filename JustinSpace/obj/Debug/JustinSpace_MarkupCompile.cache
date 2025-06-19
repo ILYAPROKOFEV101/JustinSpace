@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\obj\Debug\
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\obj\Debug\
 JustinSpace
 none
 false
 DEBUG;TRACE
-C:\Users\marty\RiderProjects\JustinSpace\JustinSpace\App.xaml
-41209782827
+C:\Users\Ivan\RiderProjects\JustinSpace\JustinSpace\App.xaml
+5701272067
 2-2079213122
-7-2080702102
-101375601195
-EarthControl.xaml;MainWindow.xaml;RocketControl.xaml;WelcomeWindow.xaml;
+81282256934
+101093553398
+EarthControl.xaml;MainWindow.xaml;RocketControl.xaml;RocketSelectorControl.xaml;WelcomeWindow.xaml;
 
 False
 
