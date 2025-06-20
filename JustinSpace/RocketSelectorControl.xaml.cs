@@ -30,21 +30,7 @@ namespace JustinSpace.Controls
                 RocketSelected?.Invoke(rocketTag);
             }
         }
-        public void SetRocket(string rocketName)
-        {
-            switch(rocketName)
-            {
-                case "rocket1":
-                    // Логика смены изображения, цвета, видимых частей
-                    break;
-                case "rocket2":
-                    // ...
-                    break;
-                case "rocket3":
-                    // ...
-                    break;
-            }
-        }
+        
 
 
     }
